@@ -1,0 +1,53 @@
+'''
+Implement depth first search algorithm and Breadth First Search algorithm, 
+Use an undirected graph and develop a recursive algorithm for searching all the vertices of a graph or tree data structure.
+'''
+
+from collections import defaultdict
+
+class Graph:
+    def __init__(self,vertices):
+        self.graph = defaultdict(list)
+        self.vertices = vertices
+
+    def addEdge(self,source,dest):
+        self.graph[source].append(dest)
+        self.graph[dest].append(source)
+    
+    def printGraph(self):
+        for i in self.graph:
+            print(i,"->",self.graph[i])
+
+    def DFSRecursion(self,source):
+        visited = [False]*self.vertices
+        self.DFS(source,visited)
+
+    def DFS(self,start,visited):
+        visited[start] = True
+        print(start,end=" ")
+        for i in self.graph[start]:
+            if visited[i]== False:
+                self.DFS(i,visited)
+
+    
+
+
+def main():
+    vertices = 6
+    graph = Graph(vertices)
+    graph.addEdge(0, 1)
+    graph.addEdge(0, 2)
+    graph.addEdge(1, 2)
+    graph.addEdge(1, 3)
+    graph.addEdge(3, 4)
+    graph.addEdge(2, 3)
+    graph.addEdge(4, 0)
+    graph.addEdge(4, 1)
+    graph.addEdge(4, 5)
+    graph.printGraph()
+    graph.DFSRecursion(0)
+
+if __name__ == "__main__":
+    main()
+
+        
