@@ -1,0 +1,18 @@
+Sr. No.     Website URL             Purpose of Website          Target Audience                    Things Liked in the Website                                                      Things Disliked in the Website                                                             Overall Evaluation of the Website (Good/Bad)
+
+1            www.amazon.com         Online retail               General public                     Clean and familiar layout with clear navigation elements.                        Can feel overwhelming due to the sheer volume of information and options.
+                                                                                                                                                                                    Excessive use of advertisements can distract from the browsing experience.                 Good
+
+
+2           www.khanacademy.org     Free online education       Students, learners of all ages     Simple and uncluttered interface with focus on learning content.                 Heavy reliance on video lectures might not appeal to all learners.
+                                                                                                   Clear organization of subjects and courses makes navigation easy                 Limited customization options for the learning experience                                  Good
+
+3           www.bbc.com/news        International news          News consumers worldwide            Trustworthy and professional layout with clear focus on news content.           Can feel text-heavy and visually unappealing at times.
+                                                                                                    Headlining stories prominently displayed for quick updates.                     Navigation through large sections of news articles can be cumbersome.                      Bad
+                                                                                                    
+4           www.netflix.com         Streaming entertainment     Movie and TV show enthusiasts      Sleek and modern interface with focus on browsing content.                       Limited control over search and discovery beyond recommendations.
+                                                                                                   Personalized recommendations make discovering new shows and movies easier.       Can be difficult to find specific content within large libraries.                          Good
+                                                                                                  
+5           www.facebook.com        Social networking           Global community                  Familiar and intuitive layout for connecting with friends and family.             Potential for privacy concerns and data misuse.
+                                                                                                  Streamlined newsfeed keeps users updated on activities and events.                Algorithm-driven newsfeed can expose users to biased content or filter bubbles.            Bad
+                                                                                                  
