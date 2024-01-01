@@ -1,49 +1,53 @@
-class Graph:
-    def __init__(self, vertices):
-        self.vertices = vertices
-        self.graph = {i: [] for i in range(self.vertices)}
-        self.visited = [False]*self.vertices
+from collections import defaultdict, deque
 
-    def add_edge(self, u, v):
-        self.graph[u].append(v)
-        self.graph[v].append(u)
+class Graph:
+    def __init__(self):
+        self.visited = defaultdict(bool)
+        self.adj = defaultdict(list)
+
+    def addEdge(self, v, w):
+        self.adj[v].append(w)
+        self.adj[w].append(v)
+
+    def BFS(self, v, q):
+        if not q:
+            return
+
+        v = q.popleft()
+
+        if not self.visited[v]:
+            self.visited[v] = True
+            print(v, end=' ')
+
+            for i in self.adj[v]:
+                if not self.visited[i]:
+                    q.append(i)
+
+        self.BFS(v, q)
 
     def DFS(self, v):
         self.visited[v] = True
         print(v, end=' ')
 
-        for neighbor in self.graph[v]:
-            if self.visited[neighbor] == False:
-                self.DFS(neighbor)
+        for i in self.adj[v]:
+            if not self.visited[i]:
+                self.DFS(i)
 
-    def BFS(self, start):
-        self.visited = [False] * self.vertices
-        queue = []
-        self.BFSRecursion(start, queue)
+g = Graph()
+g.addEdge(0, 1)
+g.addEdge(1, 3)
+g.addEdge(1, 2)
+g.addEdge(2, 4)
 
-    def BFSRecursion(self, start, queue):
-        self.visited[start] = True
-        queue.append(start)
-
-        if len(queue) > 0:
-            vertex = queue.pop(0)
-            print(vertex, end=" ")
-
-            for i in self.graph[vertex]:
-                if not self.visited[i]:
-                    self.BFSRecursion(i,queue)
-
-# Usage
-g = Graph(5)
-g.add_edge(0, 1)
-# g.add_edge(0, 2)
-g.add_edge(1, 2)
-g.add_edge(2, 0)
-g.add_edge(1, 3)
-g.add_edge(3, 4)
-
-print("DFS:")
-g.DFS(2)
-
-print("\nBFS:")
-g.BFS(2)
+print("Enter 1 for DFS and 2 for BFS: ", end='')
+choice = int(input())
+if choice == 1:
+    print("Following is Depth First Traversal: ")
+    g.DFS(2)
+elif choice == 2:
+    print("Following is Breadth First Traversal: ")
+    q = deque()
+    q.append(2)
+    g.BFS(2, q)
+else:
+    print("Invalid choice")
