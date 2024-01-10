@@ -11,7 +11,7 @@ let decimalAdded = false;
 
 const operators = ["+", "-", "x", "÷"];
 
-function handleKeyPress (e) {
+function handleKeyPress(e) {
   const key = e.target.dataset.key;
   const lastChar = operation[operation.length - 1];
 
@@ -42,7 +42,7 @@ function handleKeyPress (e) {
   if (operators.indexOf(lastChar) !== -1 && operators.indexOf(key) !== -1) {
     operation = operation.replace(/.$/, key);
     input.innerHTML = operation;
-    
+
     return;
   }
   //dot
@@ -52,7 +52,6 @@ function handleKeyPress (e) {
     input.innerHTML = operation;
     return;
   }
-
 }
 
 function evaluate(e) {
@@ -70,22 +69,18 @@ function evaluate(e) {
   }
 
   try {
-
     if (operation[0] === "0" && operation[1] !== "." && operation.length > 1) {
-
       operation = operation.slice(1);
-
     }
 
     const final = operation.replace(/x/g, "*").replace(/÷/g, "/");
     console.log(final);
-    answer = +(eval(final)).toFixed(5);
-    if(answer=="Infinity")
-    {
-      alert("DIVIDE BY ZERO ERROR")
-      answer="ERROR"
+    answer = +eval(final).toFixed(5);
+    if (answer == "Infinity") {
+      alert("DIVIDE BY ZERO ERROR");
+      answer = "ERROR";
     }
-    if (key === "=") {      
+    if (key === "=") {
       decimalAdded = false;
       operation = `${answer}`;
       answer = "";
@@ -95,7 +90,6 @@ function evaluate(e) {
     }
 
     result.innerHTML = answer;
-
   } catch (e) {
     if (key === "=") {
       decimalAdded = false;
@@ -104,11 +98,9 @@ function evaluate(e) {
     }
     console.log(e);
   }
-
 }
 
-function clearInput (e) {
-
+function clearInput(e) {
   if (e.ctrlKey) {
     operation = "";
     answer = "";
@@ -119,11 +111,10 @@ function clearInput (e) {
 
   operation = operation.slice(0, -1);
   input.innerHTML = operation;
-
 }
 
 deleteBtn.addEventListener("click", clearInput);
-keys.forEach(key => {
+keys.forEach((key) => {
   key.addEventListener("click", handleKeyPress);
   key.addEventListener("click", evaluate);
 });
