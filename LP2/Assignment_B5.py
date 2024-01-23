@@ -14,7 +14,10 @@ class SimpleChatbot:
             'i am fine': 'Great to hear that!',
             'what is your name': 'My name is Simple Chatbot.',
             'who are you': 'I am a Simple Chatbot.',
-            'bye': 'Goodbye! If you have any more questions, feel free to ask.'
+            'bye': 'Goodbye! If you have any more questions, feel free to ask.',
+            'How many assignment have been completed': 'I have completed 5 assignments.',
+            'What is the name of the course': 'The name of the course is Labrotary Practice 2.',
+            
         }
 
         self.stop_words = set(stopwords.words('english'))
