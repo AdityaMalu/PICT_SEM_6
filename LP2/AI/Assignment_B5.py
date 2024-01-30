@@ -15,8 +15,19 @@ class SimpleChatbot:
             'what is your name': 'My name is Simple Chatbot.',
             'who are you': 'I am a Simple Chatbot.',
             'bye': 'Goodbye! If you have any more questions, feel free to ask.',
-            'How many assignment have been completed': 'I have completed 5 assignments.',
-            'What is the name of the course': 'The name of the course is Labrotary Practice 2.',
+            'how many assignments have been completed': 'I have completed 5 assignments.',
+            'what is the name of the course': 'The name of the course is Laboratory Practice 2.',
+            'what is the name of the teacher': 'The name of the teacher is Ms. U.S.Pawar.',
+            'what is the name of the college': 'The name of the college is Pune Institute of Computer Technology.',
+            'what is the name of the department': 'The name of the department is Computer Engineering.',
+            'what is the name of the university': 'The name of the university is Savitribai Phule Pune University.',
+            'what is the name of the city': 'The name of the city is Pune.',
+            'what is the name of the state': 'The name of the state is Maharashtra.',
+            'what is the name of the country': 'The name of the country is India.',
+            'what is the name of the continent': 'The name of the continent is Asia.',
+            'what is the name of the planet': 'The name of the planet is Earth.',
+            'what is the name of the galaxy': 'The name of the galaxy is Milky Way.',
+            'what is the name of the universe': 'The name of the universe is Universe.',
             
         }
 
