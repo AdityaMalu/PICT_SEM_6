@@ -1,65 +1,49 @@
-import nltk
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer
+import random
+import re
 
-nltk.download('punkt')
-nltk.download('stopwords')
+# Dictionary of possible customer inquiries and their respective responses
+responses = {
+    "greeting": ["Hello! Welcome to our mobile repairing shop. How can I assist you today?", "Hi there! How may I help you with your mobile?", "Welcome! What seems to be the problem with your phone?"],
+    "farewell": ["Thank you for choosing our mobile repairing services. Have a great day!", "Your satisfaction is our top priority. Goodbye!", "If you have any more questions, feel free to ask. Take care and goodbye!"],
+    "help": ["Sure, I'm here to help. What issues are you facing with your mobile?", "How can I assist you with your mobile repair? Please let me know.", "I'm here to provide the best possible solutions for your mobile problems. What do you need help with?"],
+    "screen_cracked": ["A cracked screen is a common issue. We can replace the screen for you. Please bring your mobile to our shop, and our technicians will take care of it.", "Oh no! A cracked screen can be quite bothersome. Don't worry, we offer screen replacement services. Visit our shop, and we'll fix it for you."],
+    "battery_problem": ["If you're experiencing battery issues, we can replace your mobile's battery. Bring it to our shop, and we'll ensure it gets fixed.", "Battery problems are quite common. We can replace your mobile's battery with a new one. Please visit our shop for assistance."],
+    "software_issue": ["Software issues can often be resolved by resetting your mobile or updating its software. We can assist you with that. Please bring your phone to our shop, and our technicians will help you out.", "Software problems can be frustrating. We recommend trying a software reset or update. If the issue persists, our technicians can assist you further. Just drop by our shop."],
+    "water_damage": ["Water damage can be critical for mobiles. We suggest immediately turning off your device and bringing it to our shop for professional repair. Do not attempt to power it on.", "Water damage requires immediate attention. Please switch off your mobile, remove any SIM cards or memory cards, and bring it to our shop. Our experts will assess the damage and offer a suitable solution."],
+    "default": ["I apologize, but I couldn't understand your request.", "Apologies, I didn't quite get that. Could you please rephrase?", "I'm still learning. Can you provide more information?"]
+}
 
-class SimpleChatbot:
-    def __init__(self):
-        self.responses = {
-            'hello': 'Hi there! How can I help you today?',
-            'how are you': 'I am just a computer program, but I am doing well. How about you?',
-            'i am fine': 'Great to hear that!',
-            'what is your name': 'My name is Simple Chatbot.',
-            'who are you': 'I am a Simple Chatbot.',
-            'bye': 'Goodbye! If you have any more questions, feel free to ask.',
-            'how many assignments have been completed': 'I have completed 5 assignments.',
-            'what is the name of the course': 'The name of the course is Laboratory Practice 2.',
-            'what is the name of the teacher': 'The name of the teacher is Ms. U.S.Pawar.',
-            'what is the name of the college': 'The name of the college is Pune Institute of Computer Technology.',
-            'what is the name of the department': 'The name of the department is Computer Engineering.',
-            'what is the name of the university': 'The name of the university is Savitribai Phule Pune University.',
-            'what is the name of the city': 'The name of the city is Pune.',
-            'what is the name of the state': 'The name of the state is Maharashtra.',
-            'what is the name of the country': 'The name of the country is India.',
-            'what is the name of the continent': 'The name of the continent is Asia.',
-            'what is the name of the planet': 'The name of the planet is Earth.',
-            'what is the name of the galaxy': 'The name of the galaxy is Milky Way.',
-            'what is the name of the universe': 'The name of the universe is Universe.',
-            
-        }
+# Function to handle customer inquiries
+def respond_to_inquiry(inquiry):
+    inquiry = inquiry.lower()
+    if re.search(r"\b(?:hello|hi)\b", inquiry):
+        return random.choice(responses["greeting"])
+    elif re.search(r"\b(?:goodbye|bye)\b", inquiry):
+        return random.choice(responses["farewell"])
+    elif re.search(r"\b(?:help|support)\b", inquiry):
+        return random.choice(responses["help"])
+    elif re.search(r"\b(?:screen|cracked)\b", inquiry):
+        return random.choice(responses["screen_cracked"])
+    elif re.search(r"\b(?:battery|charge)\b", inquiry):
+        return random.choice(responses["battery_problem"])
+    elif re.search(r"\b(?:software|update|reset)\b", inquiry):
+        return random.choice(responses["software_issue"])
+    elif re.search(r"\b(?:water|damage)\b", inquiry):
+        return random.choice(responses["water_damage"])
+    else:
+        return random.choice(responses["default"])
 
-        self.stop_words = set(stopwords.words('english'))
-        self.stemmer = PorterStemmer()
+# Main loop to simulate customer interaction
+print("Welcome to the Customer Interaction Chatbot!")
+print("Type 'exit' to end the conversation.")
 
-    def preprocess_input(self, text):
-        tokens = word_tokenize(text.lower())
-        tokens = [self.stemmer.stem(token) for token in tokens if token.isalnum() and token not in self.stop_words]
-        return tokens
+while True:
+    user_input = input("Customer: ")
 
-    def respond(self, user_input):
-        user_tokens = self.preprocess_input(user_input)
+    if user_input.lower() == "exit":
+        break
 
-        for keyword in self.responses:
-            if keyword in user_tokens:
-                return self.responses[keyword]
+    bot_response = respond_to_inquiry(user_input)
+    print("Chatbot: " + bot_response)
 
-        return "I'm sorry, I didn't understand that. Can you please rephrase your question?"
-
-def main():
-    chatbot = SimpleChatbot()
-    print("Hello! I'm a simple chatbot. You can start the conversation or type 'bye' to exit.")
-
-    while True:
-        user_input = input("You: ")
-        if user_input.lower() == 'bye':
-            print("Chatbot: Goodbye!")
-            break
-
-        response = chatbot.respond(user_input)
-        print("Chatbot:", response)
-
-if __name__ == "__main__":
-    main()
+print("Thank you for using the Customer Interaction Chatbot. Goodbye!")
