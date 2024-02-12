@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+input{
+    display: block;
+}
+
+input{
+    margin:10px 0px;
+    padding:0.5em;
+}
+.first-section{
+    margin:10px 0px;
+}
+
+form{
+    width: max-content;
+    margin: 0 auto;
+}
+h1{
+    width: fit-content;
+    margin: 0 auto;
+}
+.btn{
+    width: fit-content;
+    margin: 0 auto;
+}
+.btn button{
+    padding:10px;
+    border-radius: 10px;
+    color: white;
+    background-color: rebeccapurple;
+}
