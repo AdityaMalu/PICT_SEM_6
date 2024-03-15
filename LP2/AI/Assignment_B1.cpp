@@ -10,7 +10,7 @@ template <typename T>
 T random_choice(const std::vector<T>& vec) {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(0, vec.size() - 1);
+    std::uniform_int_dinqueen_branch and boundstribution<> dis(0, vec.size() - 1);
     return vec[dis(gen)];
 }
 
