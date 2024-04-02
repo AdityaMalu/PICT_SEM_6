@@ -1,38 +1,3 @@
-# def is_safe(board, row, col, n):
-#     for i in range(row):
-#         if board[i][col] == 1:
-#             return False
-#         if col - i >= 0 and board[row-i][col-i] == 1:
-#             return False
-#         if col + i < n and board[row-i][col+i] == 1:
-#             return False
-#     return True
-
-# def solve_n_queens_util(board, row, n):
-#     if row == n:
-#         return [board[i][:] for i in range(n)]
-
-#     solutions = []
-
-#     for col in range(n):
-#         if is_safe(board, row, col, n):
-#             board[row][col] = 1
-#             result = solve_n_queens_util(board, row + 1, n)
-#             if result:
-#                 solutions.extend(result)
-#             board[row][col] = 0
-
-#     return solutions
-
-# def solve_n_queens(n):
-#     board = [[0] * n for _ in range(n)]
-#     return solve_n_queens_util(board, 0, n)
-
-# n = 4
-# solutions = solve_n_queens(n)
-# for solution in solutions:
-#     print(solution)
-
 
 def is_safe(row, col, board, row_attacked, col_attacked, left_diag_attacked, right_diag_attacked):
     N = len(board)
